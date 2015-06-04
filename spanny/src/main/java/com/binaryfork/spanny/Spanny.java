@@ -22,6 +22,12 @@ public class Spanny extends SpannableStringBuilder {
         setSpan(span, 0, text.length());
     }
 
+    /**
+     * Appends the character sequence {@code text} and spans {@code spans} over the appended part.
+     * @param text the character sequence to append.
+     * @param spans the object or objects to be spanned over the appended text.
+     * @return this {@code Spanny}.
+     */
     public Spanny append(String text, Object... spans) {
         append(text);
         for (Object span : spans) {
@@ -29,6 +35,11 @@ public class Spanny extends SpannableStringBuilder {
         }
         return this;
     }
+
+    /**
+     * Add the ImageSpan to the start of the text.
+     * @return this {@code Spanny}.
+     */
     public Spanny append(String text, ImageSpan imageSpan) {
         text = "." + text;
         append(text);
@@ -36,15 +47,30 @@ public class Spanny extends SpannableStringBuilder {
         return this;
     }
 
+    /**
+     * Append plain text.
+     * @return this {@code Spanny}.
+     */
     public Spanny appendText(String text) {
         append(text);
         return this;
     }
 
+    /**
+     * Change the flag. Default is SPAN_EXCLUSIVE_EXCLUSIVE.
+     * The flags determine how the span will behave when text is
+     * inserted at the start or end of the span's range
+     * @param flag see {@link Spanned}.
+     */
     public void setFlag(int flag) {
         this.flag = flag;
     }
 
+    /**
+     * Mark the specified range of text with the specified object.
+     * The flags determine how the span will behave when text is
+     * inserted at the start or end of the span's range.
+     */
     private void setSpan(Object span, int start, int end) {
         setSpan(span, start, end, flag);
     }
@@ -81,9 +107,16 @@ public class Spanny extends SpannableStringBuilder {
         Object getSpan();
     }
 
-    public static SpannableString spanText(CharSequence text, Object span) {
+    /**
+     * Sets span objects to the text. This is more efficient than creating a new instance of Spanny
+     * or SpannableStringBuilder.
+     * @return {@code SpannableString}.
+     */
+    public static SpannableString spanText(CharSequence text, Object... spans) {
         SpannableString spannableString = new SpannableString(text);
-        spannableString.setSpan(span, 0, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        for (Object span : spans) {
+            spannableString.setSpan(span, 0, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
         return spannableString;
     }
 }
