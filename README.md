@@ -12,10 +12,15 @@ Use `.append(text, span)` to add and mark the text with any span:
 Spanny spanny = new Spanny("Underline text", new UnderlineSpan())
                 .append("\nRed text", new ForegroundColorSpan(Color.RED))
                 .appendText("\nPlain text");
+textView.setText(spanny);
 ```
-Mark text with multiple spans: 
+Mark the text with multiple spans: 
 ```java
 spanny.append("Blue underlined text", new ForegroundColorSpan(Color.BLUE), new UnderlineSpan());
+```
+If you need a single SpannableString you can use a static method `.spanText`
+```java
+textView.setText(Spanny.spanText("Underline text", new UnderlineSpan()));
 ```
 Find and span multiple appearences of a string.
 ```java
