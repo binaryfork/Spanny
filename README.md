@@ -1,7 +1,8 @@
 # Spanny
 A helper class that extends SpannableStringBuilder and adds methods to easily mark the text with multiple spans.
 
-### Gradle
+### Download
+You can just [copy the class][1] to your project or grab it via Gradle:
 ```
 compile 'com.binaryfork:spanny:1.0.1'
 ```
@@ -76,3 +77,5 @@ License
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+
+ [1]: https://github.com/binaryfork/Spanny/blob/master/spanny/src/main/java/com/binaryfork/spanny/Spanny.java
