@@ -19,7 +19,6 @@ import android.text.style.TextAppearanceSpan;
 import android.text.style.TypefaceSpan;
 import android.text.style.URLSpan;
 import android.text.style.UnderlineSpan;
-import android.view.Display;
 import android.widget.TextView;
 
 import com.binaryfork.spanny.Spanny;
@@ -31,11 +30,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Display display = getWindowManager().getDefaultDisplay();
-        int width = display.getWidth();
         TextView textView = (TextView) findViewById(R.id.textView);
         Spanny spanny = new Spanny("StyleSpan", new StyleSpan(Typeface.BOLD_ITALIC))
-                .append("CustomAlignmentSpan", new CustomAlignmentSpan(width - dp(32), 0, true))
+                .append("CustomAlignmentSpan", new CustomAlignmentSpan(CustomAlignmentSpan.RIGHT_TOP))
                 .append("\n\nUnderlineSpan, ", new UnderlineSpan())
                 .append(" TypefaceSpan, ", new TypefaceSpan("serif"))
                 .append("URLSpan, ", new URLSpan("google.com"))
@@ -64,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         });
         textView.append(spanny);
     }
+
     private int dp(int value) {
         return (int) Math.ceil(getResources().getDisplayMetrics().density * value);
     }
