@@ -1,7 +1,7 @@
 Change Log
 ==========
 
-Version 2.5.2 *(2015-03-20)*
+Version 1.0.2 *(2015-06-10)*
 ----------------------------
 
  * Deprecated .appendText. Use .append(CharSequence).
