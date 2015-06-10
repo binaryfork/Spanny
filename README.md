@@ -1,12 +1,12 @@
 # Spanny
 A helper class that extends SpannableStringBuilder and adds methods to easily mark the text with multiple spans.
 
-![example](http://i.imgur.com/iwrJJ8G.png)
+![example](http://i.imgur.com/NPnl0yy.png)
 
 ### Download
 You can just [copy the class][1] to your project or grab it via Gradle:
 ```
-compile 'com.binaryfork:spanny:1.0.1'
+compile 'com.binaryfork:spanny:1.0.2'
 ```
 
 ### Usage
@@ -40,13 +40,14 @@ You can easily make a text with over 20 styles in a single TextView. Check the [
 
 ```java
 Spanny spanny = new Spanny("StyleSpan", new StyleSpan(Typeface.BOLD_ITALIC))
+                .append("CustomTypefaceSpan", new CustomTypefaceSpan(typeface))
                 .append("CustomAlignmentSpan", new CustomAlignmentSpan(CustomAlignmentSpan.RIGHT_TOP))
-                .append("\n\nUnderlineSpan, ", new UnderlineSpan())
+                .append("\nUnderlineSpan, ", new UnderlineSpan())
                 .append(" TypefaceSpan, ", new TypefaceSpan("serif"))
                 .append("URLSpan, ", new URLSpan("google.com"))
                 .append("StrikethroughSpan", new StrikethroughSpan())
                 .append("\nQuoteSpan", new QuoteSpan(Color.RED))
-                .appendText("\nPlain text")
+                .append("\nPlain text")
                 .append("SubscriptSpan", new SubscriptSpan())
                 .append("SuperscriptSpan", new SuperscriptSpan())
                 .append("\n\nBackgroundSpan", new BackgroundColorSpan(Color.LTGRAY))
