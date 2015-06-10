@@ -1,6 +1,8 @@
 # Spanny
 A helper class that extends SpannableStringBuilder and adds methods to easily mark the text with multiple spans.
 
+![example](http://i.imgur.com/iwrJJ8G.png)
+
 ### Download
 You can just [copy the class][1] to your project or grab it via Gradle:
 ```
@@ -19,11 +21,11 @@ Mark the text with multiple spans:
 ```java
 spanny.append("Blue underlined text", new ForegroundColorSpan(Color.BLUE), new UnderlineSpan());
 ```
-If you need a single SpannableString you can use a static method `.spanText`
+If you need a single SpannableString you can use a static method `.spanText`:
 ```java
 textView.setText(Spanny.spanText("Underline text", new UnderlineSpan()));
 ```
-Find and span multiple appearences of a string.
+Find and span multiple appearences of a string:
 ```java
 Spanny spanny = new Spanny("All 'a' will be red.")
 spanny.findAndSpan("a", new Spanny.GetSpan() {
@@ -34,12 +36,11 @@ spanny.findAndSpan("a", new Spanny.GetSpan() {
 ```
 Example
 --------
-You can easily make a text with over 20 styles in a single TextView. Check the sample app.
+You can easily make a text with over 20 styles in a single TextView. Check the [sample app][2].
 
-![example](http://i.imgur.com/KUCZ1aj.png?1)
 ```java
 Spanny spanny = new Spanny("StyleSpan", new StyleSpan(Typeface.BOLD_ITALIC))
-                .append("CustomAlignmentSpan", new CustomAlignmentSpan(width - dp(32), 0, true))
+                .append("CustomAlignmentSpan", new CustomAlignmentSpan(CustomAlignmentSpan.RIGHT_TOP))
                 .append("\n\nUnderlineSpan, ", new UnderlineSpan())
                 .append(" TypefaceSpan, ", new TypefaceSpan("serif"))
                 .append("URLSpan, ", new URLSpan("google.com"))
@@ -79,3 +80,4 @@ License
     limitations under the License.
 
  [1]: https://github.com/binaryfork/Spanny/blob/master/spanny/src/main/java/com/binaryfork/spanny/Spanny.java
+ [2]: https://github.com/binaryfork/Spanny/blob/master/app/src/main/java/com/binaryfork/spannysample/MainActivity.java
