@@ -1,7 +1,7 @@
 # Spanny
 A helper class that extends SpannableStringBuilder and adds methods to easily mark the text with multiple spans.
 
-![example](http://i.imgur.com/NPnl0yy.png)
+![example](http://i.imgur.com/NPnl0yy.png?1)
 
 ### Download
 You can just [copy the class][1] to your project or grab it via Gradle:
