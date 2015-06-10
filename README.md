@@ -14,7 +14,7 @@ Use `.append(text, span)` to add and mark the text with any span:
 ```java
 Spanny spanny = new Spanny("Underline text", new UnderlineSpan())
                 .append("\nRed text", new ForegroundColorSpan(Color.RED))
-                .appendText("\nPlain text");
+                .append("\nPlain text");
 textView.setText(spanny);
 ```
 Mark the text with multiple spans: 
