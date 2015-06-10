@@ -21,6 +21,7 @@ package com.binaryfork.spanny;
  * Please report any issues
  * https://github.com/binaryfork/Spanny/issues
  */
+import android.support.annotation.NonNull;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -34,11 +35,22 @@ public class Spanny extends SpannableStringBuilder {
 
     private int flag = Spannable.SPAN_EXCLUSIVE_EXCLUSIVE;
 
-    public Spanny(String text) {
+    public Spanny() {
+        super("");
+    }
+
+    public Spanny(CharSequence text) {
         super(text);
     }
 
-    public Spanny(String text, Object span) {
+    public Spanny(CharSequence text, Object... spans) {
+        super(text);
+        for (Object span : spans) {
+            setSpan(span, 0, length());
+        }
+    }
+
+    public Spanny(CharSequence text, Object span) {
         super(text);
         setSpan(span, 0, text.length());
     }
@@ -49,7 +61,7 @@ public class Spanny extends SpannableStringBuilder {
      * @param spans the object or objects to be spanned over the appended text.
      * @return this {@code Spanny}.
      */
-    public Spanny append(String text, Object... spans) {
+    public Spanny append(CharSequence text, Object... spans) {
         append(text);
         for (Object span : spans) {
             setSpan(span, length() - text.length(), length());
@@ -57,11 +69,17 @@ public class Spanny extends SpannableStringBuilder {
         return this;
     }
 
+    public Spanny append(CharSequence text, Object span) {
+        append(text);
+        setSpan(span, length() - text.length(), length());
+        return this;
+    }
+
     /**
      * Add the ImageSpan to the start of the text.
      * @return this {@code Spanny}.
      */
-    public Spanny append(String text, ImageSpan imageSpan) {
+    public Spanny append(CharSequence text, ImageSpan imageSpan) {
         text = "." + text;
         append(text);
         setSpan(imageSpan, length() - text.length(), length() - text.length() + 1);
@@ -72,7 +90,15 @@ public class Spanny extends SpannableStringBuilder {
      * Append plain text.
      * @return this {@code Spanny}.
      */
-    public Spanny appendText(String text) {
+    @NonNull @Override public Spanny append(@NonNull CharSequence text) {
+        super.append(text);
+        return this;
+    }
+
+    /**
+     * @deprecated use {@link #append(CharSequence text)}
+     */
+    @Deprecated public Spanny appendText(CharSequence text) {
         append(text);
         return this;
     }
@@ -105,10 +131,10 @@ public class Spanny extends SpannableStringBuilder {
      * @param getSpan    Interface to get a span for each spanned string.
      * @return {@code Spanny}.
      */
-    public Spanny findAndSpan(String textToSpan, GetSpan getSpan) {
+    public Spanny findAndSpan(CharSequence textToSpan, GetSpan getSpan) {
         int lastIndex = 0;
         while (lastIndex != -1) {
-            lastIndex = toString().indexOf(textToSpan, lastIndex);
+            lastIndex = toString().indexOf(textToSpan.toString(), lastIndex);
             if (lastIndex != -1) {
                 setSpan(getSpan.getSpan(), lastIndex, lastIndex + textToSpan.length());
                 lastIndex += textToSpan.length();
@@ -138,6 +164,12 @@ public class Spanny extends SpannableStringBuilder {
         for (Object span : spans) {
             spannableString.setSpan(span, 0, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
+        return spannableString;
+    }
+
+    public static SpannableString spanText(CharSequence text, Object span) {
+        SpannableString spannableString = new SpannableString(text);
+        spannableString.setSpan(span, 0, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         return spannableString;
     }
 }
