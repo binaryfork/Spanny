@@ -34,9 +34,11 @@ spanny.findAndSpan("a", new Spanny.GetSpan() {
             }
         });
 ```
+ 
 Example
 --------
-You can easily make a text with over 20 styles in a single TextView. Check the [sample app][2].
+Check the [sample app][2] for custom spannables.
+You can easily make a text with over 20 styles in a single TextView.
 
 ```java
 Spanny spanny = new Spanny("StyleSpan", new StyleSpan(Typeface.BOLD_ITALIC))
@@ -63,6 +65,8 @@ Spanny spanny = new Spanny("StyleSpan", new StyleSpan(Typeface.BOLD_ITALIC))
         textView.setText(spanny);
 ```
 
+Feel free to pull request a custom spannable.
+
 License
 --------
 
@@ -81,4 +85,4 @@ License
     limitations under the License.
 
  [1]: https://github.com/binaryfork/Spanny/blob/master/spanny/src/main/java/com/binaryfork/spanny/Spanny.java
- [2]: https://github.com/binaryfork/Spanny/blob/master/app/src/main/java/com/binaryfork/spannysample/MainActivity.java
+ [2]: https://github.com/binaryfork/Spanny/blob/master/app/src/main/java/com/binaryfork/spannysample/
