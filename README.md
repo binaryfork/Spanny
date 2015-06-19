@@ -1,12 +1,12 @@
 # Spanny
 A helper class that extends SpannableStringBuilder and adds methods to easily mark the text with multiple spans.
 
-![example](http://i.imgur.com/iwrJJ8G.png)
+![example](http://i.imgur.com/NPnl0yy.png?1)
 
 ### Download
 You can just [copy the class][1] to your project or grab it via Gradle:
 ```
-compile 'com.binaryfork:spanny:1.0.1'
+compile 'com.binaryfork:spanny:1.0.2'
 ```
 
 ### Usage
@@ -14,7 +14,7 @@ Use `.append(text, span)` to add and mark the text with any span:
 ```java
 Spanny spanny = new Spanny("Underline text", new UnderlineSpan())
                 .append("\nRed text", new ForegroundColorSpan(Color.RED))
-                .appendText("\nPlain text");
+                .append("\nPlain text");
 textView.setText(spanny);
 ```
 Mark the text with multiple spans: 
@@ -34,19 +34,22 @@ spanny.findAndSpan("a", new Spanny.GetSpan() {
             }
         });
 ```
+ 
 Example
 --------
-You can easily make a text with over 20 styles in a single TextView. Check the [sample app][2].
+Check the [sample app][2] for custom spannables.
+You can easily make a text with over 20 styles in a single TextView.
 
 ```java
 Spanny spanny = new Spanny("StyleSpan", new StyleSpan(Typeface.BOLD_ITALIC))
+                .append("CustomTypefaceSpan", new CustomTypefaceSpan(typeface))
                 .append("CustomAlignmentSpan", new CustomAlignmentSpan(CustomAlignmentSpan.RIGHT_TOP))
-                .append("\n\nUnderlineSpan, ", new UnderlineSpan())
+                .append("\nUnderlineSpan, ", new UnderlineSpan())
                 .append(" TypefaceSpan, ", new TypefaceSpan("serif"))
                 .append("URLSpan, ", new URLSpan("google.com"))
                 .append("StrikethroughSpan", new StrikethroughSpan())
                 .append("\nQuoteSpan", new QuoteSpan(Color.RED))
-                .appendText("\nPlain text")
+                .append("\nPlain text")
                 .append("SubscriptSpan", new SubscriptSpan())
                 .append("SuperscriptSpan", new SuperscriptSpan())
                 .append("\n\nBackgroundSpan", new BackgroundColorSpan(Color.LTGRAY))
@@ -61,6 +64,8 @@ Spanny spanny = new Spanny("StyleSpan", new StyleSpan(Typeface.BOLD_ITALIC))
                         new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER), new BackgroundColorSpan(Color.LTGRAY));
         textView.setText(spanny);
 ```
+
+Feel free to pull request a custom spannable.
 
 License
 --------
@@ -80,4 +85,4 @@ License
     limitations under the License.
 
  [1]: https://github.com/binaryfork/Spanny/blob/master/spanny/src/main/java/com/binaryfork/spanny/Spanny.java
- [2]: https://github.com/binaryfork/Spanny/blob/master/app/src/main/java/com/binaryfork/spannysample/MainActivity.java
+ [2]: https://github.com/binaryfork/Spanny/blob/master/app/src/main/java/com/binaryfork/spannysample/
