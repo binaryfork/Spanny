@@ -21,7 +21,6 @@ package com.binaryfork.spanny;
  * Please report any issues
  * https://github.com/binaryfork/Spanny/issues
  */
-import android.support.annotation.NonNull;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -90,7 +89,7 @@ public class Spanny extends SpannableStringBuilder {
      * Append plain text.
      * @return this {@code Spanny}.
      */
-    @NonNull @Override public Spanny append(@NonNull CharSequence text) {
+    @Override public Spanny append(CharSequence text) {
         super.append(text);
         return this;
     }
