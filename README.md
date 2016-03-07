@@ -37,8 +37,11 @@ spanny.findAndSpan("a", new Spanny.GetSpan() {
  
 Example
 --------
+List of all available spans: [http://developer.android.com/reference/android/text/style/package-summary.html][3]
+
 Check the [sample app][2] for custom spannables.
-You can easily make a text with over 20 styles in a single TextView.
+
+You can easily make a text with over 20 styles in a single TextView:
 
 ```java
 Spanny spanny = new Spanny("StyleSpan", new StyleSpan(Typeface.BOLD_ITALIC))
@@ -86,3 +89,4 @@ License
 
  [1]: https://github.com/binaryfork/Spanny/blob/master/spanny/src/main/java/com/binaryfork/spanny/Spanny.java
  [2]: https://github.com/binaryfork/Spanny/blob/master/app/src/main/java/com/binaryfork/spannysample/
+ [3]: http://developer.android.com/reference/android/text/style/package-summary.html
