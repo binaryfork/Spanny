@@ -6,7 +6,7 @@ A helper class that extends SpannableStringBuilder and adds methods to easily ma
 ### Download
 You can just [copy the class][1] to your project or grab it via Gradle:
 ```
-compile 'com.binaryfork:spanny:1.0.2'
+compile 'com.binaryfork:spanny:1.0.3'
 ```
 
 ### Usage
