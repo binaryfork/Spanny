@@ -2,7 +2,6 @@ package com.binaryfork.spannysample;
 
 import android.graphics.Paint;
 import android.graphics.Typeface;
-import android.support.annotation.NonNull;
 import android.text.TextPaint;
 import android.text.style.TypefaceSpan;
 
@@ -21,12 +20,12 @@ public class CustomTypefaceSpan extends TypefaceSpan {
     }
 
     @Override
-    public void updateDrawState(@NonNull TextPaint textPaint) {
+    public void updateDrawState(TextPaint textPaint) {
         applyCustomTypeFace(textPaint, newType);
     }
 
     @Override
-    public void updateMeasureState(@NonNull TextPaint paint) {
+    public void updateMeasureState(TextPaint paint) {
         applyCustomTypeFace(paint, newType);
     }
 

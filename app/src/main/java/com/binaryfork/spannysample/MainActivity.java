@@ -1,9 +1,9 @@
 package com.binaryfork.spannysample;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Layout;
 import android.text.style.AlignmentSpan;
 import android.text.style.BackgroundColorSpan;
@@ -24,14 +24,14 @@ import android.widget.TextView;
 import com.binaryfork.spanny.Spanny;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Pacifico.ttf");
-        getSupportActionBar().setTitle(Spanny.spanText("Spanny", new CustomTypefaceSpan(typeface)));
+        getActionBar().setTitle(Spanny.spanText("Spanny", new CustomTypefaceSpan(typeface)));
         TextView textView = (TextView) findViewById(R.id.textView);
         Spanny spanny = new Spanny("StyleSpan\n", new StyleSpan(Typeface.BOLD_ITALIC))
                 .append("CustomTypefaceSpan", new CustomTypefaceSpan(typeface))
