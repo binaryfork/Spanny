@@ -2,8 +2,4 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.binaryfork.spanny" >
 
-    <application
-        android:allowBackup="true" >
-    </application>
-
 </manifest>
