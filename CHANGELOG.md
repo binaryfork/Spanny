@@ -1,7 +1,12 @@
 Change Log
 ==========
 
-Version 1.0.3 *(2016-03-97)*
+Version 1.0.4 *(2016-04-16)*
+----------------------------
+
+ * Removed allowBackup from AndroidManifest.
+
+Version 1.0.3 *(2016-03-07)*
 ----------------------------
 
  * Removed support library dependency.
